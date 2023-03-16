@@ -2,8 +2,14 @@ version: 2
 jobs:
   build:
     docker:
-     - image: circleci/ruby:2.4.1
-        
+     - image: circleci/php:7.4-cli
     steps: 
       - checkout 
-      - run: echo "A first hello"
+      - run: echo "composer installing"
+      - run: composer install
+      - run: CI=true
+workflows: 
+  version: 2
+  build_app:
+    jobs:
+      - build
