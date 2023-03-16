@@ -8,6 +8,7 @@ jobs:
       - run: echo "composer installing"
       - run: composer install
       - run: php artisan migrate
+      - run: yes
       - run: php artisan db:seed
       - run: php artisan serve
       - run: CI=true
