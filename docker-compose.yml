@@ -1,0 +1,24 @@
+version: '2.13'
+
+services:
+  fut-login-api: 
+    container_name: fut-login-api-back
+    build: ./ 
+    command: php artisan serve --host 0.0.0.0
+    working_dir: /usr/src/login-api-laravel
+    links: 
+      - mysql
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/usr/src/login-api-laravel
+
+  #mysql
+  mysql:
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: fut_login_app
+      MYSQL_ROOT_PASSWORD: root
+    image: mysql
+    ports:
+      - "3306:3306"
