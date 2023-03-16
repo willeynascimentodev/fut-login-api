@@ -37,7 +37,7 @@ class LoginController extends Controller
             return response()->json([
                 'data' => [],
                 'message' => 'Invalid User'
-            ], 400);
+            ], 401);
         }
         
         
