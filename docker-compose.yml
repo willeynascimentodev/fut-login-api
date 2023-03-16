@@ -8,6 +8,7 @@ services:
     working_dir: /usr/src/login-api-laravel
     links: 
       - mysql
+      - mysql_test
     ports:
       - "8000:8000"
     volumes:
@@ -22,3 +23,13 @@ services:
     image: mysql
     ports:
       - "3306:3306"
+
+  #mysql
+  mysql_test:
+    container_name: mysql_test
+    environment:
+      MYSQL_DATABASE: fut_login_app
+      MYSQL_ROOT_PASSWORD: root
+    image: mysql
+    ports:
+      - "3307:3306"
