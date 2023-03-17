@@ -5,16 +5,16 @@ jobs:
   build:
     docker:
      - image: circleci/php:7.4-cli # The primary container where steps are run
-        auth:
+       auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
      - image: cimg/mysql:8.0
-        auth:
+       auth:
           username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-        environment:
-          MYSQL_ROOT_PASSWORD: rootpw
-          MYSQL_DATABASE: test_db
+          password: $DOCKERHUB_PASSWORD
+       environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: fut_login_app
           MYSQL_USER: user
           MYSQL_PASSWORD: passw0rd
     steps: 
@@ -25,7 +25,7 @@ jobs:
             for i in `seq 1 10`;
             do
               nc -z 127.0.0.1 3306 && echo Success && sudo docker-php-ext-install pdo_mysql && sudo docker-php-ext-enable pdo_mysql && 
-              composer install && php artisan migrate --seed --env=local
+              composer install && php artisan migrate --seed --env=testing && exit 0
               echo -n .
               sleep 1
             done
