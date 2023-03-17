@@ -15,10 +15,10 @@ jobs:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
        environment:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: fut_login_app
-          MYSQL_USER: user
-          MYSQL_PASSWORD: passw0rd
+          MYSQL_USER: forge
+          MYSQL_DATABASE: forge
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_PASSWORD: 'forge'
     steps: 
       - checkout
       - run:
