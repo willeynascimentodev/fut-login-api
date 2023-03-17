@@ -5,9 +5,9 @@ jobs:
   build:
     docker:
      - image: circleci/php:7.4-cli # The primary container where steps are run
-       auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
+        auth:
+          username: root
+          password: root
      - image: cimg/mysql:8.0
        auth:
           username: mydockerhub-user
@@ -15,7 +15,7 @@ jobs:
        environment:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: fut_login_app
-          MYSQL_USER: root
+          MYSQL_USER: user
           MYSQL_PASSWORD: passw0rd
     steps: 
       - checkout
