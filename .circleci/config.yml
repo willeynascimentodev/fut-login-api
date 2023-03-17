@@ -17,6 +17,7 @@ jobs:
           MYSQL_DATABASE: fut_login_app
           MYSQL_USER: user
           MYSQL_PASSWORD: passw0rd
+          MYSQL_HOST: passw0rd
     steps: 
       - checkout
       - run:
