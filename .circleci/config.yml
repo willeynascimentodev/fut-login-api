@@ -1,9 +1,24 @@
 version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.2.3
 jobs:
   build:
     docker:
-     - image: circleci/ruby:2.4.1
-        
+     - image: circleci/php:7.4-cli
+       environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: fut_login_app
+          MYSQL_USER: user
+          MYSQL_PASSWORD: passw0rd
+     - image: cimg/mysql:8.0
+       auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
+       environment:
+          MYSQL_USER: forge
+          MYSQL_DATABASE: forge
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_PASSWORD: 'forge'
     steps: 
       - checkout
       - run:
@@ -21,7 +36,7 @@ jobs:
           name: Install MySQL CLI; Import dummy data; run an example query
           command: |
             sudo apt-get update
-            sudo apt-get install default-mysql-client
+            sudo apt-get install default-mysql-client 
 workflows: 
   version: 2.1
   build_deploy:
