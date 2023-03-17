@@ -6,10 +6,17 @@ jobs:
        run: docker-php-ext-install mysqli pdo pdo_mysql
     steps: 
       - checkout 
-      
-       build:
+  db:
     docker:
-     - image: circleci/ruby:2.4.1
+     - image: circleci/mysql
+       environment:
+       MYSQL_DATABASE: fut_login_app
+       MYSQL_ROOT_PASSWORD: root
     steps: 
       - checkout 
-      - run: echo "A first hello"
+workflows: 
+  version: 2
+  build_test:
+    jobs:
+      - db
+      - build
