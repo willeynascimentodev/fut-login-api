@@ -27,7 +27,7 @@ jobs:
               nc -z 127.0.0.1 3306 && echo Success && exit 0
               echo -n .
               composer install
-              php artisan migrate --seed
+              php artisan migrate --seed --env=testing
               sleep 1
             done
             echo Failed waiting for MySQL && exit 1
