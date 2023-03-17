@@ -37,7 +37,7 @@ jobs:
           command: |
             for i in `seq 1 10`;
             do
-              cp env_example .env.testing && php artisan key:generate && php artisan migrate:fresh --seed --env=testing && php artisan test && exit 0
+              sudo cp env_example .env.testing && php artisan key:generate && php artisan migrate:fresh --seed --env=testing && php artisan test && exit 0
               echo -n .
               sleep 1
             done
