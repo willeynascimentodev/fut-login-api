@@ -6,6 +6,7 @@ jobs:
       
       working_dir: /usr/src/login-api-laravel
       links: 
+        - mysql
         - mysql_test
       ports:
         - "8000:8000"
@@ -15,18 +16,19 @@ jobs:
       - run: composer install
       - run: php artisan migrate:fresh
       - run: php artisan db:seed
+      - run: php artisan serve
       - run: CI=true
       build:
-    
+  db:
     docker:
-      mysql_test:
-      container_name: mysql_test
-      environment:
-        MYSQL_DATABASE: fut_login_app
-        MYSQL_ROOT_PASSWORD: root
-      image: mysql
+     - image: circleci/php:7.4-cli
+      
+      working_dir: /usr/src/login-api-laravel
+      links: 
+        - mysql
+        - mysql_test
       ports:
-        - "3307:3306"
+        - "8000:8000"
     steps: 
       - checkout 
       - run: echo "composer installing"
