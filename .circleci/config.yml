@@ -22,7 +22,7 @@ jobs:
           command: |
             for i in `seq 1 10`;
             do
-              nc -z 127.0.0.1 3306 && echo Success && docker-php-ext-install mysqli pdo pdo_mysql && composer install && php artisan migrate --seed --env=testing && exit 0
+              nc -z 127.0.0.1 3306 && echo Success && sudo chmod 755 /usr/src/php docker-php-ext-install mysqli pdo pdo_mysql && composer install && php artisan migrate --seed --env=testing && exit 0
               echo -n .
               sleep 1
             done
