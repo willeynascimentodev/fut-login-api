@@ -3,7 +3,6 @@ jobs:
   build:
     docker:
      - image: circleci/php:7.4-cli
-      
       working_dir: /usr/src/login-api-laravel
       links: 
         - mysql
