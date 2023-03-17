@@ -3,11 +3,35 @@ jobs:
   build:
     docker:
      - image: circleci/php:7.4-cli
+      
+      working_dir: /usr/src/login-api-laravel
+      links: 
+        - mysql_test
+      ports:
+        - "8000:8000"
     steps: 
       - checkout 
       - run: echo "composer installing"
       - run: composer install
-      - run: php artisan migrate
+      - run: php artisan migrate:fresh
+      - run: php artisan db:seed
+      - run: CI=true
+      build:
+    
+    docker:
+      mysql_test:
+      container_name: mysql_test
+      environment:
+        MYSQL_DATABASE: fut_login_app
+        MYSQL_ROOT_PASSWORD: root
+      image: mysql
+      ports:
+        - "3307:3306"
+    steps: 
+      - checkout 
+      - run: echo "composer installing"
+      - run: composer install
+      - run: php artisan migrate:fresh
       - run: php artisan db:seed
       - run: php artisan serve
       - run: CI=true
@@ -15,4 +39,5 @@ workflows:
   version: 2
   build_app:
     jobs:
+      - db
       - build
