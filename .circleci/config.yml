@@ -13,7 +13,7 @@ jobs:
   db:
     docker:
      - image: circleci/mysql
-        command: mysqld --default-authentication-plugin=mysql_native_password
+        # command: mysqld --default-authentication-plugin=mysql_native_password
         environment:
           MYSQL_USER: forge
           MYSQL_DATABASE: forge
@@ -25,5 +25,5 @@ workflows:
   version: 2
   build_test:
     jobs:
-      - build
       - db
+      - build
