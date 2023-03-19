@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,17 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::resource('login', LoginController::class)->only([
-    'store', 'destroy'
-]);
+Route::group(['middleware' => ['xss']], function () {
+    Route::resource('login', LoginController::class)->only([
+        'store', 'destroy'
+    ]);
+    
+    Route::resource('register', UserController::class)->only([
+        'store'
+    ]);
+});
+
+
 
 
 
