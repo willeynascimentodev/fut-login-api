@@ -4,6 +4,7 @@
 ## Requirements
 <p> 1 - Docker </p>
 <p> 2 - Docker Compose </p>
+<p> 3 - Composer </p>
 
 ## Set Up
 <p> 1 - Download the respository. </p>
