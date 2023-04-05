@@ -1,6 +1,10 @@
+## Description
+<p>A sample of a Login Service with JWT Auth, Tests, CI/CD and Docker.<p>
+
 ## Requirements
-1 - Docker
-2 - Docker Compose
+<p> 1 - Docker </p>
+<p> 2 - Docker Compose </p>
+
 
 ## Set Up
 1 - Download the respository.
