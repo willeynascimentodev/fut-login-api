@@ -5,10 +5,9 @@
 <p> 1 - Docker </p>
 <p> 2 - Docker Compose </p>
 
-
 ## Set Up
-1 - Download the respository.
-2 - Access the root directory and execute the ./setup.sh command on your terminal.
+<p> 1 - Download the respository. </p>
+<p> 2 - Access the root directory and execute the ./setup.sh command on your terminal. </p>
 
 ## Run
 1 - Avaliable on localhost:8000
