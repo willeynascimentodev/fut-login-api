@@ -1,3 +1,4 @@
+composer install
 docker compose up -d
 docker compose exec -i fut-login-api php artisan config:clear
 docker compose exec -i fut-login-api php artisan migrate:fresh
